@@ -13,6 +13,10 @@ def fetch_current_products():
     else:
         raise Exception(f"Failed to fetch products: {response.status_code} - {response.text}")
 
+
+
+
+
 def load_previous_products():
     if os.path.exists(LOCAL_FILE):
         with open(LOCAL_FILE, "r") as f:
