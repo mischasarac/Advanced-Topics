@@ -4,7 +4,7 @@ import os
 
 # Endpoint to get all trading pairs (products)
 COINBASE_PRODUCTS_URL = "https://api.exchange.coinbase.com/products"
-LOCAL_FILE = "/home/mischa/topics/Advanced-Topics/new_listing_detection/coinbase_products.json"
+LOCAL_FILE = "coinbase_products.json"
 
 def fetch_current_products():
     response = requests.get(COINBASE_PRODUCTS_URL)
@@ -41,7 +41,7 @@ def main():
     else:
         print("No new listings.")
 
-    save_current_products(new_products)
+    # save_current_products(new_products) DON'T DO THIS UNLESS TIMEFRAME HAS PASSED. CURRENT DATE 8/5/25 (D/M/Y)
 
 if __name__ == "__main__":
     main()
