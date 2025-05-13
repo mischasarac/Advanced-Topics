@@ -14,7 +14,10 @@ def get_orderbook(ticker : str):
         response = requests.get(url, params=params)
         response.raise_for_status()
         orderbook = response.json()
-        print(orderbook)
+        asks = orderbook['asks']
+        bids = orderbook['bids']
+        print(f"asks : {asks[0]}, {asks[1]}")
+        print(f"bids : {bids[0]}, {bids[1]}")
     except requests.RequestException as e:
         print(f"Error fetching order book: {e}")
 
