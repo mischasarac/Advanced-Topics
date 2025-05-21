@@ -21,4 +21,4 @@ def get_orderbook(ticker : str):
     except requests.RequestException as e:
         print(f"Error fetching order book: {e}")
 
-get_orderbook("SIGNUSDT")
+get_orderbook("OBOLUSDT")

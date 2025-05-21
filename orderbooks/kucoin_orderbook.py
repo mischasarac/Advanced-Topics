@@ -4,7 +4,7 @@ def get_orderbook(ticker: str):
     url = "https://api.kucoin.com/api/v1/market/orderbook/level2_100"
     params = {
         "symbol": ticker,
-        "limits" : 2
+        "limit" : 2
     }
 
     try:
@@ -18,4 +18,4 @@ def get_orderbook(ticker: str):
     except requests.RequestException as e:
         print(f"Error with orderbook: {e}")
 
-get_orderbook("SIGN-USDT")
+get_orderbook("SXT-USDT")

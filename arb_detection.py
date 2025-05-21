@@ -4,7 +4,7 @@ import os
 
 
 
-def get_orderbook(ticker : str):
+def get_order_book(ticker : str):
     url = "https://api.bybit.com/v5/market/orderbook"
     params = {
         "category" : "spot",
@@ -19,5 +19,4 @@ def get_orderbook(ticker : str):
     except requests.RequestException as e:
         print(f"Error: {e}")
 
-
-get_orderbook("XIAGORK")
+get_order_book("HAEDALUSDT")

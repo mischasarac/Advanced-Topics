@@ -9,7 +9,7 @@ def fetch_latest_listings():
         "type": 1,
         "catalogId": 48,  # Catalog ID for new listings
         "pageNo": 1,
-        "pageSize": 50
+        "pageSize": 20
     }
     try:
         response = requests.get(url, params=params)

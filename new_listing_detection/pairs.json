@@ -1,0 +1,25 @@
+{
+  "NXPC": [
+    "binance",
+    "bybit",
+    "kucoin"
+  ],
+  "DOOD": [
+    "binance",
+    "bybit",
+    "kucoin"
+  ],
+  "OBOL": [
+    "binance",
+    "bybit"
+  ],
+  "SXT": [
+    "binance",
+    "bybit",
+    "kucoin"
+  ],
+  "GORK": [
+    "bybit",
+    "kucoin"
+  ]
+}
