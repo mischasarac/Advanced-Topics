@@ -82,41 +82,6 @@ class Kucoin(Exchange):
         return {"bids": [[-1, -1], [-1, -1]], "asks": [[-1, -1], [-1, -1]]}
 
 
-EXCHANGE_CLASSES = {
-    "binance": Binance,
-    "bybit": Bybit,
-    "kucoin": Kucoin
-}
 
-
-def get_new_listing_orderbook():
-    pairs_path = "/home/mischa/topics/Advanced-Topics/new_listing_detection/pairs.json"
-    if not os.path.exists(pairs_path):
-        print(f"pairs.json not found at {pairs_path}")
-        return
-
-    with open(pairs_path, "r") as f:
-        all_pairs = json.load(f)
-
-    for ticker, exchanges in all_pairs.items():
-        print(f"{ticker}USDT:")
-
-        for exchange_name in exchanges:
-            exchange_class = EXCHANGE_CLASSES.get(exchange_name)
-            if not exchange_class:
-                print(f" - Unknown exchange: {exchange_name}")
-                continue
-            exchange_instance = exchange_class(ticker)
-            result = exchange_instance.fetch_orderbook()
-
-
-            print(f" - {exchange_name} - ")
-            try:
-                print(f"Bids: {result['bids'][0]}, {result['bids'][1]}")
-                print(f"Asks: {result['asks'][0]}, {result['asks'][1]}")
-            except IndexError:
-                print(" - Not enough data to show top 2 bids/asks")
-
-
-if __name__ == "__main__":
-    get_new_listing_orderbook()
+# if __name__ == "__main__":
+#     get_new_listing_orderbook()
