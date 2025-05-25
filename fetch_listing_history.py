@@ -2,13 +2,45 @@ import ccxt
 import pandas as pd
 from datetime import datetime, timedelta, timezone
 import time
+import os
 
+# Mapping of coins to their listing dates and exchanges
+listings = {
+    "USD1": {
+        "start_date": "2025-05-22",
+        "exchanges": ["binance", "kucoin"]
+    },
+    "SYRUP": {
+        "start_date": "2025-05-06",
+        "exchanges": ["binance", "bybit"]
+    },
+    "NXPC": {
+        "start_date": "2025-05-15",
+        "exchanges": ["binance", "bybit"]
+    },
+    "PFVS": {
+        "start_date": "2025-05-27",
+        "exchanges": ["bybit", "kucoin"]
+    }
+}
 
+# Mapping of exchange names to ccxt exchange instances
+exchange_instances = {
+    "binance": ccxt.binance(),
+    "bybit": ccxt.bybit(),
+    "kucoin": ccxt.kucoin()
+}
 
-def fetch_ohlcv(exchange, symbol, start_time, duration_days=1, timeframe='1m'):
+# Mapping of exchange names to symbol formatting
+symbol_formats = {
+    "binance": lambda symbol: f"{symbol}/USDT",
+    "bybit": lambda symbol: f"{symbol}/USDT",
+    "kucoin": lambda symbol: f"{symbol}/USDT"
+}
+
+def fetch_ohlcv(exchange, symbol, start_time, duration_days=5, timeframe='1m'):
     since = int(start_time.timestamp() * 1000)
     end_time = start_time + timedelta(days=duration_days)
-
     all_candles = []
     while since < int(end_time.timestamp() * 1000):
         try:
@@ -16,57 +48,36 @@ def fetch_ohlcv(exchange, symbol, start_time, duration_days=1, timeframe='1m'):
         except Exception as e:
             print(f"[{exchange.id}] Error fetching {symbol}: {e}")
             break
-
         if not candles:
             break
-
         all_candles.extend(candles)
         since = candles[-1][0] + 1  # move just after the last fetched time
         time.sleep(exchange.rateLimit / 1000)  # to respect API limits
-
     df = pd.DataFrame(all_candles, columns=["timestamp", "open", "high", "low", "close", "volume"])
     df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms', utc=True)
     return df
 
-
-def fetch_all_exchanges(symbol_base, start_time):
-    exchanges = {
-        'kucoin': ccxt.kucoin(),
-        'binance': ccxt.binance(),
-        'bybit': ccxt.bybit()
-    }
-    # For appending to end of ticker in request
-    ticker_append = {
-        "kucoin" : "/USDT",
-        "bybit" : "USDT",
-        "binance" : "USDT"
-    }
-
-    for name, exchange in exchanges.items():
-        symbol = symbol_base + ticker_append[name]
-        print(f"\nFetching {symbol} from {name}...")
-        try:
-            df = fetch_ohlcv(exchange, symbol, start_time)
-            if df.empty:
-                print(f"No data found for {symbol} on {name}")
+def fetch_all_data(listings, save_dir='bt_data'):
+    os.makedirs(save_dir, exist_ok=True)
+    for symbol, info in listings.items():
+        start_dt = datetime.strptime(info["start_date"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        for exchange_name in info["exchanges"]:
+            exchange = exchange_instances.get(exchange_name)
+            if not exchange:
+                print(f"Exchange {exchange_name} not supported.")
                 continue
-
-            filename = f"{symbol_base.replace('/', '-')}_{name}.csv"
-            df.to_csv(filename, index=False)
-            print(f"Saved to {filename}")
-        except Exception as e:
-            print(f"Error with {name}: {e}")
-
+            formatted_symbol = symbol_formats[exchange_name](symbol)
+            print(f"\nFetching {formatted_symbol} from {exchange_name} starting {start_dt.isoformat()}...")
+            try:
+                df = fetch_ohlcv(exchange, formatted_symbol, start_dt)
+                if df.empty:
+                    print(f"No data found for {formatted_symbol} on {exchange_name}")
+                    continue
+                filename = f"{save_dir}/{symbol}_{exchange_name}.csv"
+                df.to_csv(filename, index=False)
+                print(f"Saved to {filename}")
+            except Exception as e:
+                print(f"Error with {exchange_name}: {e}")
 
 if __name__ == "__main__":
-    import argparse
-
-    parser = argparse.ArgumentParser(description="Fetch 5-day price history after listing")
-    parser.add_argument("--symbol", type=str, help="Symbol like 'XYZ/USDT'")
-    parser.add_argument("--start_date", type=str, help="Listing start date in YYYY-MM-DD format")
-
-    args = parser.parse_args()
-    start_dt = datetime.strptime(args.start_date, "%Y-%m-%d").replace(tzinfo=timezone.utc)
-
-
-    fetch_all_exchanges(args.symbol, start_dt)
+    fetch_all_data(listings)
