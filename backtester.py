@@ -1,78 +1,101 @@
-import ccxt
 import pandas as pd
-from datetime import datetime, timedelta
+import os
+from datetime import timedelta
 
-# Configure fees and slippage
-TRADING_FEES = {
-    'binance': 0.001,  # 0.1%
-    'kucoin': 0.001,
-    'bybit': 0.001
-}
+# CONFIG
+start_capital = 100
+spread_entry_threshold = 0.002  # 0.2%
+spread_exit_threshold = 0.0005   # 0.1%
+holding_period_minutes = 200     # fixed holding time
+data_dir = "bt_data"              # directory with your CSVs
 
-LATENCY_SECONDS = 15  # Time between listing signal and execution
+# Result tracking
+results = []
+capital = start_capital
 
-# Simulated listing event
-listing_event = {
-    'symbol': 'BTC/USDT',
-    'listing_exchange': 'kucoin',
-    'timestamp': datetime(2024, 7, 1, 12, 0, 0)
-}
+# Get all listed tokens (with both kucoin and bybit data)
+files = os.listdir(data_dir)
+symbols = sorted(set(f.split("_")[0] for f in files if f.endswith('.csv')))
+exchanges = ['kucoin', 'bybit']
 
-# Simulated historical prices (replace with real historical snapshots)
-historical_prices = {
-    'kucoin': pd.DataFrame([
-        {'timestamp': datetime(2024, 7, 1, 12, 0, 0), 'price': 1.00},
-        {'timestamp': datetime(2024, 7, 1, 12, 0, 15), 'price': 1.05},
-    ]),
-    'binance': pd.DataFrame([
-        {'timestamp': datetime(2024, 7, 1, 12, 0, 15), 'price': 1.10},
-    ]),
-    'bybit': pd.DataFrame([
-        {'timestamp': datetime(2024, 7, 1, 12, 0, 15), 'price': 1.09},
-    ])
-}
+for symbol in symbols:
+    kucoin_file = f"{data_dir}/{symbol}_kucoin.csv"
+    bybit_file = f"{data_dir}/{symbol}_bybit.csv"
 
-def get_price_at(exchange_name, target_time):
-    df = historical_prices[exchange_name]
-    df = df[df['timestamp'] <= target_time]
+    if not os.path.exists(kucoin_file) or not os.path.exists(bybit_file):
+        continue
+
+    df1 = pd.read_csv(kucoin_file, parse_dates=['timestamp'])
+    df2 = pd.read_csv(bybit_file, parse_dates=['timestamp'])
+
+    df = pd.merge(df1, df2, on='timestamp', suffixes=('_1', '_2'))
+
     if df.empty:
-        return None
-    return df.iloc[-1]['price']
+        continue
 
-def simulate_arbitrage(event):
-    buy_time = event['timestamp']
-    sell_time = buy_time + timedelta(seconds=LATENCY_SECONDS)
+    # Check for arbitrage opportunities in the first 30 minutes
+    listing_time = df['timestamp'].iloc[0]
+    max_check_time = listing_time + timedelta(minutes=30)
+    checked = False
 
-    buy_exchange = event['listing_exchange']
-    buy_price = get_price_at(buy_exchange, buy_time)
+    for i in range(len(df)):
+        row = df.iloc[i]
+        ts = row['timestamp']
 
-    if buy_price is None:
-        return f"No buy price at {buy_time} on {buy_exchange}"
+        if ts > max_check_time:
+            break
 
-    print(f"BUY {event['symbol']} on {buy_exchange} at {buy_price:.4f}")
+        price1 = row['close_1']
+        price2 = row['close_2']
+        spread = abs(price1 - price2) / ((price1 + price2) / 2)
 
-    results = []
+        if spread >= spread_entry_threshold:
+            # Entry
+            entry_time = ts
+            exit_time = entry_time + timedelta(minutes=holding_period_minutes)
 
-    for sell_exchange in ['binance', 'bybit']:
-        sell_price = get_price_at(sell_exchange, sell_time)
-        if sell_price is None:
-            continue
+            # Find exit index
+            future_df = df[df['timestamp'] >= exit_time]
+            if future_df.empty:
+                break
 
-        fee_buy = buy_price * TRADING_FEES[buy_exchange]
-        fee_sell = sell_price * TRADING_FEES[sell_exchange]
+            exit_row = future_df.iloc[0]
 
-        profit = (sell_price - fee_sell) - (buy_price + fee_buy)
-        profit_pct = profit / (buy_price + fee_buy) * 100
+            # Simulate one long and one short
+            long_price_entry = min(price1, price2)
+            short_price_entry = max(price1, price2)
 
-        results.append({
-            'sell_exchange': sell_exchange,
-            'sell_price': sell_price,
-            'profit_pct': round(profit_pct, 2)
-        })
+            long_price_exit = min(exit_row['close_1'], exit_row['close_2'])
+            short_price_exit = max(exit_row['close_1'], exit_row['close_2'])
 
-    return results
+            # Assume we allocate half capital to long and half to short
+            long_size = capital / 2 / long_price_entry
+            short_size = capital / 2 / short_price_entry
 
-# Run the backtest
-results = simulate_arbitrage(listing_event)
-for r in results:
-    print(f"SELL on {r['sell_exchange']} at {r['sell_price']:.4f} — Profit: {r['profit_pct']}%")
+            pnl_long = long_size * (long_price_exit - long_price_entry)
+            pnl_short = short_size * (short_price_entry - short_price_exit)
+            total_pnl = pnl_long + pnl_short
+            capital += total_pnl
+
+            results.append({
+                "symbol": symbol,
+                "entry_time": entry_time,
+                "exit_time": exit_row['timestamp'],
+                "entry_price_1": price1,
+                "entry_price_2": price2,
+                "exit_price_1": exit_row['close_1'],
+                "exit_price_2": exit_row['close_2'],
+                "pnl": total_pnl,
+                "capital": capital
+            })
+
+            checked = True
+            break
+
+    if not checked:
+        print(f"No arbitrage opportunity found for {symbol} in first 30 minutes")
+
+# Results
+result_df = pd.DataFrame(results)
+print(result_df)
+print(f"\nFinal capital: ${capital:.2f}")

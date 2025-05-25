@@ -32,13 +32,14 @@ def fetch_ohlcv(exchange, symbol, start_time, duration_days=1, timeframe='1m'):
 def fetch_all_exchanges(symbol_base, start_time):
     exchanges = {
         'kucoin': ccxt.kucoin(),
-        # 'binance': ccxt.binance(),
+        'binance': ccxt.binance(),
         'bybit': ccxt.bybit()
     }
     # For appending to end of ticker in request
     ticker_append = {
         "kucoin" : "/USDT",
-        "bybit" : "USDT"
+        "bybit" : "USDT",
+        "binance" : "USDT"
     }
 
     for name, exchange in exchanges.items():

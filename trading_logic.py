@@ -11,16 +11,18 @@ EXCHANGE_CLASSES = {
 
 
 def get_new_listing_orderbook(ticker : str, exchanges): 
-
+    # Logic copied over from orderbook.py
     print(f"{ticker}USDT:")
     orderbooks = {}
     for exchange_name in exchanges:
+        # Get specific class for this exchange
         exchange_class = EXCHANGE_CLASSES.get(exchange_name)
         if not exchange_class:
             print(f" - Unknown exchange: {exchange_name}")
             continue
-        exchange_instance = exchange_class(ticker)
-        result = exchange_instance.fetch_orderbook()
+        exchange_instance = exchange_class(ticker) # constructing instance
+        result = exchange_instance.fetch_orderbook() # Fetching top 2 items in order book
+        # In case of error, result will be [[-1, -1], [-1, -1]] for both bids and asks
 
         print(f" - {exchange_name} - ")
         try:
@@ -35,6 +37,7 @@ def get_new_listing_orderbook(ticker : str, exchanges):
 
 
 def get_path_listing(filepath: str):
+    # Getting file as json
     if os.path.exists(filepath):
         with open(filepath, "r") as f:
             return json.load(f)
@@ -42,9 +45,14 @@ def get_path_listing(filepath: str):
         raise FileNotFoundError
 
 def identify_difference() -> bool:
+    # Detecting a difference between the old listings and the new ones. If new listing detected, resulting orderbooks will be returned
+
+    # Note that only 1 detection will be made. This goes under the assumption (will only profit off) the expectation that only 1 change will 
+    # likely have been made in the previous 5 minutes.
+    
     new_pairs_path = "/home/mischa/topics/Advanced-Topics/new_listing_detection/pairs.json"
     old_pairs_path = "/home/mischa/topics/Advanced-Topics/current_pairs.json"
-    
+    # For comparison
     new_pairs = get_path_listing(new_pairs_path)
     old_pairs = get_path_listing(old_pairs_path)
 
