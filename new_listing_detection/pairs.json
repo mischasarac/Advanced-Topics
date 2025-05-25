@@ -1,35 +1,31 @@
 {
-  "SYRUP": [
+  "AWE": [
     "binance",
-    "bybit"
+    "bybit",
+    "kucoin"
   ],
   "USD1": [
     "binance",
     "kucoin"
   ],
+  "SYRUP": [
+    "binance",
+    "bybit"
+  ],
   "NXPC": [
     "binance",
     "bybit"
   ],
-  "DOOD": [
-    "binance",
-    "bybit"
+  "PFVS": [
+    "bybit",
+    "kucoin"
   ],
-  "AWE": [
-    "binance",
+  "SOON": [
     "bybit",
     "kucoin"
   ],
   "LAUNCHCOIN": [
     "bybit",
     "kucoin"
-  ],
-  "PFVS": [
-    "bybit",
-    "kucoin"
-  ],
-  "BTC": [
-    "binance",
-    "bybit"
   ]
 }
