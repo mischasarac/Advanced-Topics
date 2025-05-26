@@ -4,15 +4,15 @@ from datetime import timedelta
 from itertools import combinations
 
 # CONFIG
-start_capital = 10000
+start_capital = 100
 spread_entry_threshold = 0.002
 spread_exit_threshold = 0.00005
 max_holding_minutes = 200
 data_dir = "bt_data"
 
 # Trading constraints
-ENTRY_DELAY = 5          # seconds
-EXIT_DELAY = 5           # seconds
+ENTRY_DELAY = 60          # seconds
+EXIT_DELAY = 60           # seconds
 FEE_RATE = 0.001         # 0.1% per side
 
 # Result tracking
