@@ -11,8 +11,8 @@ max_holding_minutes = 200
 data_dir = "bt_data"
 
 # Trading constraints
-ENTRY_DELAY = 60          # seconds
-EXIT_DELAY = 60           # seconds
+ENTRY_DELAY = 10          # seconds
+EXIT_DELAY = 10           # seconds
 FEE_RATE = 0.001         # 0.1% per side
 
 # Result tracking
@@ -25,7 +25,7 @@ symbols = sorted(set(f.split("_")[0] for f in files if f.endswith('.csv')))
 all_exchanges = ['binance', 'bybit', 'kucoin']
 
 banned = {
-    "SIGN"
+    # "SIGN"
 }
 
 
