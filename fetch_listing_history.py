@@ -4,34 +4,96 @@ from datetime import datetime, timedelta, timezone
 import time
 import os
 
-# Mapping of coins to their listing dates and exchanges
-listings = {
-    "USD1": {
-        "start_date": "2025-05-22",
-        "exchanges": ["binance", "kucoin"]
-    },
-    "SYRUP": {
-        "start_date": "2025-05-06",
-        "exchanges": ["binance", "bybit"]
-    },
-    "NXPC": {
-        "start_date": "2025-05-15",
-        "exchanges": ["binance", "bybit"]
-    },
-    "PFVS": {
-        "start_date": "2025-05-27",
-        "exchanges": ["bybit", "kucoin"]
-    }
-}
+# Updated listings as a list of dicts (example snippet from your JSON)
+listings = [
+  {
+    "coin": "SOON",
+    "date": "2025-05-23",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "USD1",
+    "date": "2025-05-22",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "HUMA",
+    "date": "2025-05-25",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "AWE",
+    "date": "2025-05-21",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "AGT",
+    "date": "2025-05-21",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "NXPC",
+    "date": "2025-05-15",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "DOOD",
+    "date": "2025-05-09",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "SXT",
+    "date": "2025-05-08",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "B2",
+    "date": "2025-05-06",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "SIGN",
+    "date": "2025-04-28",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  }
+]
 
-# Mapping of exchange names to ccxt exchange instances
 exchange_instances = {
     "binance": ccxt.binance(),
     "bybit": ccxt.bybit(),
     "kucoin": ccxt.kucoin()
 }
 
-# Mapping of exchange names to symbol formatting
 symbol_formats = {
     "binance": lambda symbol: f"{symbol}/USDT",
     "bybit": lambda symbol: f"{symbol}/USDT",
@@ -52,16 +114,18 @@ def fetch_ohlcv(exchange, symbol, start_time, duration_days=5, timeframe='1m'):
             break
         all_candles.extend(candles)
         since = candles[-1][0] + 1  # move just after the last fetched time
-        time.sleep(exchange.rateLimit / 1000)  # to respect API limits
+        time.sleep(exchange.rateLimit / 1000)  # respect rate limit
     df = pd.DataFrame(all_candles, columns=["timestamp", "open", "high", "low", "close", "volume"])
     df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms', utc=True)
     return df
 
 def fetch_all_data(listings, save_dir='bt_data'):
     os.makedirs(save_dir, exist_ok=True)
-    for symbol, info in listings.items():
-        start_dt = datetime.strptime(info["start_date"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
-        for exchange_name in info["exchanges"]:
+    for entry in listings:
+        symbol = entry["coin"]
+        start_date_str = entry["date"]
+        start_dt = datetime.strptime(start_date_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        for exchange_name in entry["exchanges"]:
             exchange = exchange_instances.get(exchange_name)
             if not exchange:
                 print(f"Exchange {exchange_name} not supported.")

@@ -49,7 +49,7 @@ def identify_difference() -> bool:
 
     # Note that only 1 detection will be made. This goes under the assumption (will only profit off) the expectation that only 1 change will 
     # likely have been made in the previous 5 minutes.
-    
+
     new_pairs_path = "/home/mischa/topics/Advanced-Topics/new_listing_detection/pairs.json"
     old_pairs_path = "/home/mischa/topics/Advanced-Topics/current_pairs.json"
     # For comparison
@@ -117,6 +117,7 @@ def detect_arb():
         print("arb detected")
     else:
         print("no arb possible")
+    
 
 
 
