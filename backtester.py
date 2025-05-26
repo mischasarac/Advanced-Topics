@@ -8,7 +8,7 @@ start_capital = 100
 spread_entry_threshold = 0.002
 spread_exit_threshold = 0.00005
 max_holding_minutes = 200
-data_dir = "bt_data"
+data_dir = "/home/mischa/topics/Advanced-Topics/bt_data"
 
 # Trading constraints
 ENTRY_DELAY = 10          # seconds
