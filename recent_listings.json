@@ -1,0 +1,82 @@
+[
+  {
+    "coin": "SOON",
+    "date": "2025-05-23",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "USD1",
+    "date": "2025-05-22",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "HUMA",
+    "date": "2025-05-25",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "AWE",
+    "date": "2025-05-21",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "AGT",
+    "date": "2025-05-21",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "NXPC",
+    "date": "2025-05-15",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "DOOD",
+    "date": "2025-05-09",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "SXT",
+    "date": "2025-05-08",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "B2",
+    "date": "2025-05-06",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
+    "coin": "SIGN",
+    "date": "2025-04-28",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  }
+]

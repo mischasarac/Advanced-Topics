@@ -1,7 +1,7 @@
 {
-  "SYRUP": [
+  "SOPH": [
     "binance",
-    "bybit"
+    "kucoin"
   ],
   "USD1": [
     "binance",
@@ -11,16 +11,13 @@
     "binance",
     "bybit"
   ],
-  "DOOD": [
-    "binance",
-    "bybit"
-  ],
-  "AWE": [
+  "HUMA": [
     "binance",
     "bybit",
     "kucoin"
   ],
-  "LAUNCHCOIN": [
+  "AWE": [
+    "binance",
     "bybit",
     "kucoin"
   ],
@@ -28,8 +25,12 @@
     "bybit",
     "kucoin"
   ],
-  "BTC": [
-    "binance",
-    "bybit"
+  "SOON": [
+    "bybit",
+    "kucoin"
+  ],
+  "ELDE": [
+    "bybit",
+    "kucoin"
   ]
 }

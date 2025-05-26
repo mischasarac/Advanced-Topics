@@ -50,7 +50,7 @@ class Bybit(Exchange):
 
     def get_params(self):
         params = super().get_params()
-        params["category"] = "spot"
+        params["category"] = "linear"
         return params
 
     def parse_response(self, response_json):
