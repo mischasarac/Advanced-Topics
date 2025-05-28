@@ -2,6 +2,8 @@ import time
 from scan_listings import ListingAggregator
 from change_listener import identify_difference
 from get_orderbook import get_orderbook
+from execute_trade import execute_arb
+from get_balances import get_balances
 import json
 import os
 from datetime import timedelta
@@ -18,9 +20,17 @@ def run():
 
     if change:
         orderbook = get_orderbook(change[0], change[1])
-        print(f"New listing detected: {change[0]} on exchanges {change[1]}")
-        print(f"Orderbook for {change[0]}: {json.dumps(orderbook, indent=2)}")
-    else:
-        print("No new listings detected.")
+
+        if orderbook is not None:
+
+            # Get amount (USDT) within each exchange
+            long_exchange = orderbook["long"][0]
+            short_exchange = orderbook["short"][0]
+
+            balances = get_balances(long_exchange, short_exchange)
+
+            execute_arb(ticker=change, long_exchange=orderbook["long"][0], 
+                        short_exchange=orderbook["short"][0], balances=balances)
+            
     # Wait for 5 minutes before the next run
     time.sleep(300)  # 5 minutes in seconds

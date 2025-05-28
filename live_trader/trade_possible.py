@@ -2,7 +2,7 @@ import requests
 from orderbooks.orderbook import Binance, Bybit, Kucoin
 import os
 import json
-from get_order_book import get_orderbook
+from live_trader.get_orderbook import get_orderbook
 
 
 def get_path_listing(filepath: str):
