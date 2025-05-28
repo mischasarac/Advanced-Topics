@@ -176,7 +176,7 @@ class ListingAggregator:
         for token, exchanges in cross_listed.items():
             print(f"{token} : {exchanges}")
 
-        path = "/home/mischa/topics/Advanced-Topics/live_trader/coin_listings/new_pairs.json"
+        path = f"{os.getcwd()}/coin_listings/new_pairs.json"
         with open(path, "w") as f:
             json.dump(cross_listed, f, indent=2)
 

@@ -18,8 +18,10 @@ def identify_difference():
     # Note that only 1 detection will be made. This goes under the assumption (will only profit off) the expectation that only 1 change will 
     # likely have been made in the previous 5 minutes.
 
-    new_pairs_path = "/home/mischa/topics/Advanced-Topics/live_trader/coin_listings/new_pairs.json"
-    old_pairs_path = "/home/mischa/topics/Advanced-Topics/live_trader/coin_listings/current_pairs.json"
+    cwd = os.getcwd()
+
+    new_pairs_path = f"{cwd}/coin_listings/new_pairs.json"
+    old_pairs_path = f"{cwd}/coin_listings/current_pairs.json"
     # For comparison
     new_pairs = get_path_listing(new_pairs_path)
     old_pairs = get_path_listing(old_pairs_path)
