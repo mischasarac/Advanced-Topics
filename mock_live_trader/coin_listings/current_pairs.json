@@ -1,0 +1,32 @@
+{
+  "AWE": [
+    "binance",
+    "bybit"
+  ],
+  "SOPH": [
+    "binance",
+    "bybit",
+    "kucoin"
+  ],
+  "HUMA": [
+    "binance",
+    "bybit",
+    "kucoin"
+  ],
+  "A": [
+    "binance",
+    "bybit"
+  ],
+  "B": [
+    "bybit",
+    "kucoin"
+  ],
+  "PFVS": [
+    "bybit",
+    "kucoin"
+  ],
+  "ELDE": [
+    "bybit",
+    "kucoin"
+  ]
+}
