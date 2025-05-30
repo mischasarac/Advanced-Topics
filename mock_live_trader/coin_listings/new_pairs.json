@@ -3,12 +3,12 @@
     "binance",
     "bybit"
   ],
-  "SOPH": [
+  "HUMA": [
     "binance",
     "bybit",
     "kucoin"
   ],
-  "HUMA": [
+  "SOPH": [
     "binance",
     "bybit",
     "kucoin"
@@ -17,15 +17,15 @@
     "binance",
     "bybit"
   ],
+  "ELDE": [
+    "bybit",
+    "kucoin"
+  ],
   "B": [
     "bybit",
     "kucoin"
   ],
   "PFVS": [
-    "bybit",
-    "kucoin"
-  ],
-  "ELDE": [
     "bybit",
     "kucoin"
   ]

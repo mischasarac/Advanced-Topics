@@ -78,5 +78,5 @@ if __name__ == "__main__":
             run_once(balance_manager)
         except Exception as e:
             print(f"🔥 Error: {e}")
-        print("🛌 Sleeping 20 seconds...\n")
+        print(f"🛌 {datetime.now()} Sleeping 20 seconds...\n")
         time.sleep(20)
