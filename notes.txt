@@ -1,0 +1,3 @@
+ - To implement on actual coin trading. Fix logic in main to be that of mock_live_trader.
+ - Make sure that there is a close_position function implemented with correct logic on 
+ - Make sure to enable margins trading on each exchange.
