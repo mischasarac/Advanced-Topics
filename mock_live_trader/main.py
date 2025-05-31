@@ -8,6 +8,8 @@ from get_balances import BalanceManager
 from datetime import datetime, timedelta
 
 
+LOG_FILE = "trade_log.csv"
+
 def run_once(balance_manager):
 
     # Step 1: Update listing info
@@ -28,6 +30,13 @@ def run_once(balance_manager):
     # Step 4: Check arbitrage opportunity
     arb = detect_arb(orderbook)
     if arb is None:
+        # Log the detection with zero profit
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        with open(LOG_FILE, mode='a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([timestamp, "arb_detection", exchanges[0], ticker, "", "", "", "", "0.00"])
+
+        print("No arbitrage opportunity detected.")
         return
     print("Arb possible")
 
