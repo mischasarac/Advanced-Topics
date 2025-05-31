@@ -1,4 +1,5 @@
 import time
+import csv
 from scan_listings import ListingAggregator
 from change_listener import identify_difference
 from get_orderbook import get_orderbook
@@ -31,11 +32,6 @@ def run_once(balance_manager):
     arb = detect_arb(orderbook)
     if arb is None:
         # Log the detection with zero profit
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        with open(LOG_FILE, mode='a', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerow([timestamp, "arb_detection", exchanges[0], ticker, "", "", "", "", "0.00"])
-
         print("No arbitrage opportunity detected.")
         return
     print("Arb possible")

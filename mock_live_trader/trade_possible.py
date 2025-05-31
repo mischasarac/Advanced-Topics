@@ -83,6 +83,11 @@ def detect_arb(orderbooks=None):
             "short" : best_ask
         }
     else:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        with open(LOG_FILE, mode='a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([timestamp, "arb_detection", best_bid[0], ticker, "", "", best_bid[1], "", "0.00"])
+            writer.writerow([timestamp, "arb_detection", best_ask[0], ticker, "", "", best_ask[1], "", "0.00"])
         print("no arb possible")
     return None
     

@@ -36,12 +36,12 @@ def identify_difference():
             for exchange in new_exchanges:
                 if exchange not in set(old_exchanges):
                     print(f"Difference found for pair '{pair}':")
-                print(f"  Old exchanges: {old_exchanges}")
-                print(f"  New exchanges: {new_exchanges}")
-                if os.path.exists(old_pairs_path):
-                    with open(old_pairs_path, "w") as f:
-                        json.dump(new_pairs, f, indent=2)
-                return (pair, new_exchanges)
+                    print(f"  Old exchanges: {old_exchanges}")
+                    print(f"  New exchanges: {new_exchanges}")
+                    if os.path.exists(old_pairs_path):
+                        with open(old_pairs_path, "w") as f:
+                            json.dump(new_pairs, f, indent=2)
+                    return (pair, new_exchanges)
         else:
             if os.path.exists(old_pairs_path):
                 with open(old_pairs_path, "w") as f:

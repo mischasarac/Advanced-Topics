@@ -1,17 +1,21 @@
 {
-  "A": [
+  "HUMA": [
     "binance",
-    "bybit"
+    "bybit",
+    "kucoin"
   ],
   "SOPH": [
     "binance",
     "bybit",
     "kucoin"
   ],
-  "HUMA": [
+  "BDXN": [
     "binance",
-    "bybit",
-    "kucoin"
+    "bybit"
+  ],
+  "A": [
+    "binance",
+    "bybit"
   ],
   "AWE": [
     "binance",
@@ -21,11 +25,11 @@
     "bybit",
     "kucoin"
   ],
-  "B": [
+  "PFVS": [
     "bybit",
     "kucoin"
   ],
-  "PFVS": [
+  "B": [
     "bybit",
     "kucoin"
   ]
