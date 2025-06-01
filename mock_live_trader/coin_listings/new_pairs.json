@@ -1,10 +1,18 @@
 {
-  "SOPH": [
+  "BDXN": [
+    "binance",
+    "bybit"
+  ],
+  "A": [
+    "binance",
+    "bybit"
+  ],
+  "HUMA": [
     "binance",
     "bybit",
     "kucoin"
   ],
-  "HUMA": [
+  "SOPH": [
     "binance",
     "bybit",
     "kucoin"
@@ -13,19 +21,11 @@
     "binance",
     "bybit"
   ],
-  "A": [
-    "binance",
-    "bybit"
-  ],
-  "BDXN": [
-    "binance",
-    "bybit"
-  ],
-  "ELDE": [
+  "PFVS": [
     "bybit",
     "kucoin"
   ],
-  "PFVS": [
+  "ELDE": [
     "bybit",
     "kucoin"
   ],
