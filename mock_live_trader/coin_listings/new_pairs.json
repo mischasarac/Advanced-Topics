@@ -3,7 +3,7 @@
     "binance",
     "bybit"
   ],
-  "A": [
+  "AWE": [
     "binance",
     "bybit"
   ],
@@ -17,7 +17,7 @@
     "bybit",
     "kucoin"
   ],
-  "AWE": [
+  "A": [
     "binance",
     "bybit"
   ],
@@ -25,11 +25,11 @@
     "bybit",
     "kucoin"
   ],
-  "ELDE": [
+  "B": [
     "bybit",
     "kucoin"
   ],
-  "B": [
+  "ELDE": [
     "bybit",
     "kucoin"
   ]
