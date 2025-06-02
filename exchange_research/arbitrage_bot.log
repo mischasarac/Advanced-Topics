@@ -1,0 +1,44 @@
+2025-06-01 12:20:07,429 - INFO - Initialized binance with 3693 symbols
+2025-06-01 12:20:11,322 - INFO - Initialized coinbase with 940 symbols
+2025-06-01 12:20:12,889 - INFO - Initialized kraken with 1037 symbols
+2025-06-01 12:20:14,456 - INFO - Initialized kucoin with 1284 symbols
+2025-06-01 12:20:24,938 - INFO - Initialized huobi with 2182 symbols
+2025-06-01 12:20:30,889 - INFO - Initialized okx with 2531 symbols
+2025-06-01 12:20:43,347 - INFO - Initialized bybit with 2615 symbols
+2025-06-01 12:20:54,269 - INFO - Initialized gate with 5675 symbols
+2025-06-01 12:20:57,380 - INFO - Initialized bitget with 1367 symbols
+2025-06-01 12:20:57,380 - INFO - Starting new listing monitor...
+2025-06-01 12:22:07,461 - ERROR - Error in monitoring loop: unsupported operand type(s) for +: 'NoneType' and 'float'
+2025-06-01 12:31:02,839 - INFO - 
+        🚨 ARBITRAGE OPPORTUNITY DETECTED 🚨
+        Symbol: FARM/USDT
+        Buy: bitget @ $4.036000
+        Sell: binance @ $31.070000
+        Profit: 669.82%
+        24h Volume: $3,514,663.42
+        Risk Level: HIGH_REWARD_HIGH_RISK
+        Recommendations: Verify prices manually before execution, NEW LISTING - High volatility expected, Monitor for price manipulation, Start with small test amounts, Check withdrawal/deposit status on both exchanges
+        Timestamp: 2025-06-01 12:31:02.839452
+        
+2025-06-01 12:31:02,849 - INFO - 
+        🚨 ARBITRAGE OPPORTUNITY DETECTED 🚨
+        Symbol: FARM/USDT
+        Buy: bitget @ $4.036000
+        Sell: gate @ $31.030000
+        Profit: 668.83%
+        24h Volume: $312,597.68
+        Risk Level: HIGH_REWARD_HIGH_RISK
+        Recommendations: Verify prices manually before execution, NEW LISTING - High volatility expected, Monitor for price manipulation, Start with small test amounts, Check withdrawal/deposit status on both exchanges
+        Timestamp: 2025-06-01 12:31:02.839460
+        
+2025-06-01 12:31:05,826 - INFO - 
+        🚨 ARBITRAGE OPPORTUNITY DETECTED 🚨
+        Symbol: TRC/USDT
+        Buy: bybit @ $0.000146
+        Sell: gate @ $0.001742
+        Profit: 1093.36%
+        24h Volume: $189,141.53
+        Risk Level: HIGH_REWARD_HIGH_RISK
+        Recommendations: Verify prices manually before execution, NEW LISTING - High volatility expected, Monitor for price manipulation, Start with small test amounts, Check withdrawal/deposit status on both exchanges
+        Timestamp: 2025-06-01 12:31:05.826105
+        
