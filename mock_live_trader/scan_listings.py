@@ -174,7 +174,8 @@ class ListingAggregator:
         """
         cross_listed = {t: exs for t, exs in seen.items() if len(exs) > 1}
 
-        path = f"{os.getcwd()}/coin_listings/new_pairs.json"
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        path = os.path.join(base_dir, "coin_listings", "new_pairs.json")
         with open(path, "w") as f:
             json.dump(cross_listed, f, indent=2)
 

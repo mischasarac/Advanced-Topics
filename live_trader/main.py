@@ -25,6 +25,13 @@ def run_once():
     # Step 3: Get orderbooks
     orderbook = get_orderbook(ticker, exchanges)
 
+    # To accommodate for delay of orderbook release
+    start_time = datetime.now()
+    max_wait = timedelta(minutes=2)
+
+    while (not orderbook) and datetime.now() - start_time < max_wait:
+        orderbook = get_orderbook(ticker, exchanges)
+
     # Step 4: Check arbitrage opportunity
     arb = detect_arb(orderbook)
     if arb is None:
@@ -64,7 +71,7 @@ def run_once():
             print("⚠️ Max wait time reached — closing positions anyway.")
 
         # Close position and update balances accordingly
-        close_position(curr_trades, balance_manager)
+        close_position(curr_trades)
 
 
 if __name__ == "__main__":

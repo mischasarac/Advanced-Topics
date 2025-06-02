@@ -28,6 +28,12 @@ def run_once(balance_manager):
     # Step 3: Get orderbooks
     orderbook = get_orderbook(ticker, exchanges)
 
+    start_time = datetime.now()
+    max_wait = timedelta(minutes=2)
+
+    while (not orderbook) and datetime.now() - start_time < max_wait:
+        orderbook = get_orderbook(ticker, exchanges)
+
     # Step 4: Check arbitrage opportunity
     arb = detect_arb(orderbook)
     if arb is None:
