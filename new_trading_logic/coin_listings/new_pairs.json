@@ -2,35 +2,35 @@
   "binance": [
     "AWE",
     "HAEDAL",
-    "USD1",
     "SOPH",
     "HUMA",
-    "BDXN",
-    "A"
+    "A",
+    "USD1",
+    "BDXN"
   ],
   "bybit": [
-    "AWE",
-    "HUMA",
-    "PFVS",
     "SOON",
-    "PUMPBTC",
-    "ELDE",
+    "AWE",
     "SOPH",
-    "AGT",
-    "BDXN",
+    "HUMA",
     "A",
-    "B"
+    "ELDE",
+    "PFVS",
+    "B",
+    "PUMPBTC",
+    "BDXN",
+    "AGT"
   ],
   "kucoin": [
-    "BUN",
-    "PRO",
-    "HUMA",
     "EDGEN",
-    "ELDE",
-    "ASRR",
     "SOPH",
+    "ASRR",
+    "HUMA",
     "LAT",
+    "ELDE",
+    "RDO",
     "B",
-    "RDO"
+    "BUN",
+    "PRO"
   ]
 }
