@@ -22,9 +22,9 @@ async def wait_for_orderbook(new_ticker, timeout_seconds=28800):
     while True:
         try:
             # Check if orderbook exists (not None)
-            orderbook = get_orderbook(new_ticker[1], new_ticker[2])
+            orderbook = get_orderbook(new_ticker[1], new_ticker[0])
             if orderbook is not None:
-                print(f"✅ Orderbook found for {new_ticker[1]}/{new_ticker[2]}!")
+                print(f"✅ Orderbook found for {new_ticker[1]}/{new_ticker[0]}!")
                 return True
                 
         except Exception as e:
@@ -32,10 +32,10 @@ async def wait_for_orderbook(new_ticker, timeout_seconds=28800):
         
         # Check timeout
         if time.time() - start_time > timeout_seconds:
-            print(f"⏰ Timeout reached waiting for orderbook for {new_ticker[1]}/{new_ticker[2]}")
+            print(f"⏰ Timeout reached waiting for orderbook for {new_ticker[1]}/{new_ticker[0]}")
             return False
             
-        print(f"🔍 Waiting for orderbook... {new_ticker[1]}/{new_ticker[2]}")
+        print(f"🔍 Waiting for orderbook... {new_ticker[1]}/{new_ticker[0]}")
         await asyncio.sleep(5)  # Wait 5 seconds before next check
 
 async def run_once_async(balance_manager):
