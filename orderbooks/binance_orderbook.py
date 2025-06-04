@@ -1,24 +1,18 @@
 import requests
-import numpy
-import os
 
-
-def get_orderbook(ticker : str):
-    url = "https://api.binance.com/api/v3/depth"
-    params = {
-        "symbol" : ticker,
-        "limit" : 2
-    }
-
+def print_all_binance_tickers():
+    url = "https://api.binance.com/api/v3/exchangeInfo"
     try:
-        response = requests.get(url, params=params)
+        response = requests.get(url)
         response.raise_for_status()
-        orderbook = response.json()
-        asks = orderbook['asks']
-        bids = orderbook['bids']
-        print(f"asks : {asks[0]}, {asks[1]}")
-        print(f"bids : {bids[0]}, {bids[1]}")
-    except requests.RequestException as e:
-        print(f"Error fetching order book: {e}")
+        data = response.json()
 
-get_orderbook("OBOLUSDT")
+        symbols = [s['symbol'] for s in data['symbols']]
+        for symbol in symbols:
+            print(symbol)
+
+    except requests.RequestException as e:
+        print(f"Error fetching tickers: {e}")
+
+if __name__ == "__main__":
+    print_all_binance_tickers()
