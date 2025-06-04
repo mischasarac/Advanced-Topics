@@ -70,6 +70,7 @@ class BinanceExchange(ExchangeBase):
             response = requests.get(self.url, params=self.params, headers=self.headers)
             response.raise_for_status()
             data = response.json()
+            # print(data)
             articles = data.get('data', {}).get('catalogs', [])[0].get('articles', [])
             result = [article.get("title") for article in articles]
             return result
@@ -173,9 +174,12 @@ class ListingAggregator:
         """
         Saves cross-listed tokens to a JSON file.
         """
+        # print(seen)
 
         base_dir = os.path.dirname(os.path.abspath(__file__))
         path = os.path.join(base_dir, "coin_listings", "new_pairs.json")
         with open(path, "w") as f:
             json.dump(seen, f, indent=2)
 
+la = ListingAggregator()
+la.gather_listings()

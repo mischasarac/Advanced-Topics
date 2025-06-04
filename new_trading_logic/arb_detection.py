@@ -19,13 +19,8 @@ def get_path_listing(filepath: str):
 
 EXCHANGES = ["binance", "bybit", "kucoin"]
 
-def detect_arb():
-    listingAgg = ListingAggregator()
-    listingAgg.gather_listings()
-    new_ticker = identify_difference()
-
-    if new_ticker is None:
-        return None
+def detect_arb(new_ticker):
+    
     
     # This section is to account for early announcement
     start_time = datetime.now()
