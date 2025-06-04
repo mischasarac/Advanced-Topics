@@ -81,6 +81,7 @@ async def listing_detection_loop(balance_manager):
                 asyncio.create_task(monitor_listing(new_ticker, balance_manager))
         except Exception as e:
             print(f"🔥 Error: {e}")
+        print(f"Sleeping another 20 seconds : {datetime.now()}")
         await asyncio.sleep(20)
 
 if __name__ == "__main__":
