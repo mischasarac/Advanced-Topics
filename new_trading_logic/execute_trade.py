@@ -43,12 +43,13 @@ def execute_arb(ticker: str, long_exchange: str, short_exchange: str, amount: di
         print("No valid trade amount provided.")
         return
     
-    curr_orderbook = get_orderbook(ticker, [long_exchange, short_exchange])
-    if not curr_orderbook:
+    long_orderbook = get_orderbook(ticker, long_exchange)
+    short_orderbook = get_orderbook(ticker, short_exchange)
+    if long_orderbook is None or short_orderbook is None:
         print("Failed to retrieve orderbook.")
         return
-    long_price = curr_orderbook[long_exchange]['asks'][0][0] if long_exchange in curr_orderbook else None
-    short_price = curr_orderbook[short_exchange]['bids'][0][0] if short_exchange in curr_orderbook else None
+    long_price = long_orderbook[long_exchange]['asks'][0][0] if long_exchange in long_orderbook else None
+    short_price = short_orderbook[short_exchange]['bids'][0][0] if short_exchange in short_orderbook else None
     if long_price is None or short_price is None:
         print("Failed to retrieve prices for exchanges.")
         return
@@ -95,13 +96,15 @@ def close_position(position: dict, balance_manager):
         print("Invalid position format: missing long or short trade information.")
         return
     
-    curr_orderbook = get_orderbook(long_trade['ticker'], [long_trade['exchange'], short_trade['exchange']])
-    if not curr_orderbook:
+    # curr_orderbook = get_orderbook(long_trade['ticker'], [long_trade['exchange'], short_trade['exchange']])
+    long_orderbook = get_orderbook(long_trade['ticker'], long_trade['exchange'])
+    short_orderbook = get_orderbook(short_trade['ticker'], short_trade['exchange'])
+    if long_orderbook is None or short_orderbook is None:
         print("Failed to retrieve orderbook.")
         return
     
-    long_close_price = curr_orderbook[long_trade['exchange']]['bids'][0][0] if long_trade['exchange'] in curr_orderbook else None
-    short_close_price = curr_orderbook[short_trade['exchange']]['asks'][0][0] if short_trade['exchange'] in curr_orderbook else None
+    long_close_price = long_orderbook[long_trade['exchange']]['bids'][0][0] if long_trade['exchange'] in curr_orderbook else None
+    short_close_price = short_orderbook[short_trade['exchange']]['asks'][0][0] if short_trade['exchange'] in curr_orderbook else None
     if long_close_price is None or short_close_price is None:
         print("Failed to retrieve prices for exchanges.")
         return

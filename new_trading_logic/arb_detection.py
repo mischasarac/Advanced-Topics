@@ -19,14 +19,7 @@ def get_path_listing(filepath: str):
 
 EXCHANGES = ["binance", "bybit", "kucoin"]
 
-def detect_arb():
-    listingAgg = ListingAggregator()
-    listingAgg.gather_listings()
-    new_ticker = identify_difference()
 
-    if new_ticker is None:
-        return None
-    print("New Ticker Detected")
 def detect_arb(new_ticker):
     
     

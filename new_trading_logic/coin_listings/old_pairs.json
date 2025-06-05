@@ -1,34 +1,35 @@
 {
   "binance": [
-    "SOPH",
     "2025-06-05",
-    "USD1",
     "HAEDAL",
-    "RESOLV",
     "A",
+    "RESOLV",
+    "BDXN",
+    "USD1",
     "HUMA",
-    "BDXN"
+    "SOPH"
   ],
   "bybit": [
     "AGT",
-    "ELDE",
-    "SOPH",
+    "LA",
     "RESOLV",
-    "A",
-    "HUMA",
     "PUMPBTC",
-    "BDXN"
+    "A",
+    "BDXN",
+    "ELDE",
+    "HUMA",
+    "SOPH"
   ],
   "kucoin": [
-    "B",
-    "LAT",
-    "MIRAI",
-    "RDO",
-    "EDGEN",
     "SOPH",
-    "PRO",
-    "LA",
+    "MIRAI",
     "BUN",
-    "ASRR"
+    "LA",
+    "RDO",
+    "PRO",
+    "ASRR",
+    "EDGEN",
+    "LAT",
+    "B"
   ]
 }
