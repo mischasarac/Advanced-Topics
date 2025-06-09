@@ -26,6 +26,13 @@ def get_orderbook(ticker: str, exchange: str, orderbook_depth=3):
 
         return orderbook
 
+    except ccxt.NetworkError as e:
+        print(f"Network error occurred while fetching from {exchange}: {e}")
+        # Handle network errors, maybe retry or log appropriately
+    except ccxt.ExchangeError as e:
+        print(f"Exchange error occurred while fetching from {exchange}: {e}")
+        # Handle specific exchange errors, such as symbol not found
     except Exception as e:
-        print(f"An error occurred while fetching from {exchange}: {e}")
-        return None
+        print(f"An unexpected error occurred while fetching from {exchange}: {e}")
+        # Handle any other unexpected errors
+    return None
