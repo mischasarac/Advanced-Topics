@@ -11,7 +11,7 @@ max_holding_minutes = 200
 data_dir = "bt_data"
 
 # Trading constraints
-ENTRY_DELAY = 10          # seconds
+ENTRY_DELAY = 60          # seconds
 EXIT_DELAY = 10           # seconds
 FEE_RATE = 0.001         # 0.1% per side
 
@@ -25,7 +25,8 @@ symbols = sorted(set(f.split("_")[0] for f in files if f.endswith('.csv')))
 all_exchanges = ['binance', 'bybit', 'kucoin']
 
 banned = {
-    # "SIGN"
+    # "SIGN",
+    # "DOOD"
 }
 
 
@@ -71,7 +72,7 @@ for symbol in symbols:
             price1 = row[f'close_{ex1}']
             price2 = row[f'close_{ex2}']
             spread = abs(price1 - price2) / ((price1 + price2) / 2)
-            if spread - (FEE_RATE * 2 + spread_exit_threshold) > max_spread:
+            if spread - (FEE_RATE * 4 + spread_exit_threshold) > max_spread:
                 max_spread = spread
                 best_pair = (ex1, price1, ex2, price2)
 
@@ -119,7 +120,7 @@ for symbol in symbols:
 
                     results.append({
                         "symbol": symbol,
-                        "entry_time": entry_time,
+                        # "entry_time": entry_time,
                         "entry_exec_time": entry_exec_time,
                         # "exit_time": exit_row['timestamp'],
                         # "exit_exec_time": delayed_exit_row['timestamp'],
@@ -129,10 +130,10 @@ for symbol in symbols:
                         "entry_price_short": price_short_exec,
                         "exit_price_long": long_exit,
                         "exit_price_short": short_exit,
-                        "pnl": total_pnl,
-                        "pnl %" : percent_profit,
+                        # "pnl": total_pnl,
+                        "pnl %" : percent_profit * 100,
                         # "fees": total_fees,
-                        "capital": capital
+                        # "capital": capital
                     })
 
                     checked = True

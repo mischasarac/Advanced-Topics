@@ -37,4 +37,4 @@ def get_orderbook(ticker: str):
     except requests.RequestException as e:
         print(f"Error: {e}")
 
-get_orderbook("LAUNCHCOINUSDT")
+get_orderbook("SKATEUSDT")
