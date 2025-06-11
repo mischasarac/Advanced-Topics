@@ -1,34 +1,34 @@
 {
   "binance": [
+    "BDXN",
+    "HUMA",
+    "HOME",
+    "A",
+    "RESOLV",
     "SOPH",
     "USD1",
-    "A",
-    "BDXN",
-    "HOME",
     "2025-06-05",
-    "SKATE",
-    "RESOLV",
-    "HUMA"
+    "SKATE"
   ],
   "bybit": [
-    "SOPH",
     "BDXN",
+    "RESOLV",
+    "SOPH",
+    "PUMPBTC",
     "LA",
     "SKATE",
-    "PUMPBTC",
-    "RESOLV",
     "B2"
   ],
   "kucoin": [
-    "PRO",
     "HOME",
+    "ZEUSETH",
+    "RESOLV",
+    "ASRR",
+    "PRO",
+    "FLOCK",
     "EDGEN",
     "LA",
-    "SKATE",
-    "RESOLV",
-    "ZEUSETH",
-    "ASRR",
     "MIRAI",
-    "FLOCK"
+    "SKATE"
   ]
 }
