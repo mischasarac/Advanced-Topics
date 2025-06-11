@@ -14,6 +14,7 @@ def fetch_kucoin_new_listings():
         response = requests.get(url, params=params)
         response.raise_for_status()
         data = response.json()
+        print(data)
 
         if data.get("code") == "200000":
             items = data["data"]["items"]
