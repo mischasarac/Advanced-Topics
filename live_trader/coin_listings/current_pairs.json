@@ -1,0 +1,36 @@
+{
+  "USD1": [
+    "binance",
+    "kucoin"
+  ],
+  "NXPC": [
+    "binance",
+    "bybit"
+  ],
+  "AWE": [
+    "binance",
+    "bybit",
+    "kucoin"
+  ],
+  "HUMA": [
+    "binance",
+    "bybit",
+    "kucoin"
+  ],
+  "SOPH": [
+    "binance",
+    "kucoin"
+  ],
+  "PFVS": [
+    "bybit",
+    "kucoin"
+  ],
+  "ELDE": [
+    "bybit",
+    "kucoin"
+  ],
+  "B": [
+    "bybit",
+    "kucoin"
+  ]
+}

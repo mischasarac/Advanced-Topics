@@ -1,7 +1,15 @@
 [
   {
+    "coin": "SOPH",
+    "date": "2025-05-26, 12:03:01",
+    "exchanges": [
+      "binance",
+      "kucoin"
+    ]
+  },
+  {
     "coin": "SOON",
-    "date": "2025-05-23",
+    "date": "2025-05-23, 05:49:46",
     "exchanges": [
       "binance",
       "kucoin"
@@ -9,7 +17,7 @@
   },
   {
     "coin": "USD1",
-    "date": "2025-05-22",
+    "date": "2025-05-22, 11:30:10",
     "exchanges": [
       "binance",
       "kucoin"
@@ -17,7 +25,7 @@
   },
   {
     "coin": "HUMA",
-    "date": "2025-05-25",
+    "date": "2025-05-25, 09:09:02",
     "exchanges": [
       "binance",
       "kucoin"
@@ -25,7 +33,7 @@
   },
   {
     "coin": "AWE",
-    "date": "2025-05-21",
+    "date": "2025-05-21, 07:30:00",
     "exchanges": [
       "binance",
       "kucoin"
@@ -33,7 +41,7 @@
   },
   {
     "coin": "AGT",
-    "date": "2025-05-21",
+    "date": "2025-05-21, 03:00:02",
     "exchanges": [
       "binance",
       "kucoin"
@@ -41,7 +49,7 @@
   },
   {
     "coin": "NXPC",
-    "date": "2025-05-15",
+    "date": "2025-05-15, 07:00:02",
     "exchanges": [
       "binance",
       "kucoin"
@@ -49,7 +57,7 @@
   },
   {
     "coin": "DOOD",
-    "date": "2025-05-09",
+    "date": "2025-05-09, 09:01:11",
     "exchanges": [
       "binance",
       "kucoin"
@@ -57,7 +65,7 @@
   },
   {
     "coin": "SXT",
-    "date": "2025-05-08",
+    "date": "2025-05-08, 12:30:03",
     "exchanges": [
       "binance",
       "kucoin"
@@ -65,7 +73,7 @@
   },
   {
     "coin": "B2",
-    "date": "2025-05-06",
+    "date": "2025-05-06, 09:29:04",
     "exchanges": [
       "binance",
       "kucoin"
@@ -73,7 +81,7 @@
   },
   {
     "coin": "SIGN",
-    "date": "2025-04-28",
+    "date": "2025-04-28, 10:30:17",
     "exchanges": [
       "binance",
       "kucoin"

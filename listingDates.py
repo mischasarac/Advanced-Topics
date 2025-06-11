@@ -61,7 +61,7 @@ def fetch_binance_listings():
             for article in articles:
                 release_timestamp = article.get("releaseDate")
                 release_date = (
-                    datetime.fromtimestamp(release_timestamp / 1000, UTC).strftime('%Y-%m-%d')
+                    datetime.fromtimestamp(release_timestamp / 1000, UTC).strftime('%Y-%m-%d, %H:%M:%S')
                     if release_timestamp else ""
                 )
                 listings.append({
@@ -88,7 +88,7 @@ def fetch_bybit_listings():
             if article.get("type", {}).get("key") == "new_crypto":
                 release_timestamp = article.get("createdAt")
                 release_date = (
-                    datetime.fromtimestamp(release_timestamp / 1000, UTC).strftime('%Y-%m-%d')
+                    datetime.fromtimestamp(release_timestamp / 1000, UTC).strftime('%Y-%m-%d, %H:%M:%S')
                     if release_timestamp else ""
                 )
                 listings.append({
@@ -113,7 +113,7 @@ def fetch_kucoin_listings():
         for article in articles:
             release_timestamp = article.get("cTime")
             release_date = (
-                datetime.fromtimestamp(release_timestamp / 1000, UTC).strftime('%Y-%m-%d')
+                datetime.fromtimestamp(release_timestamp / 1000, UTC).strftime('%Y-%m-%d, %H:%M:%S')
                 if release_timestamp else ""
             )
             listings.append({
@@ -141,12 +141,13 @@ def aggregate_listings():
         date = listing["date"]
         if not date:
             continue
-        date_dt = datetime.strptime(date, "%Y-%m-%d").replace(tzinfo=UTC)
+        date_dt = datetime.strptime(date, "%Y-%m-%d, %H:%M:%S").replace(tzinfo=UTC)
         if date_dt < one_year_ago:
             continue
 
         current = coin_dict[symbol]
-        if not current["date"] or date_dt > datetime.strptime(current["date"], "%Y-%m-%d").replace(tzinfo=UTC):
+        if not current["date"] or date_dt > datetime.strptime(current["date"], "%Y-%m-%d, %H:%M:%S").replace(tzinfo=UTC):
+            print(date)
             current["date"] = date
         current["exchanges"].add(listing["exchange"])
 
@@ -161,7 +162,7 @@ def aggregate_listings():
         })
 
     # Save to JSON
-    output_path = "recent_listings.json"
+    output_path = "/home/mischa/topics/Advanced-Topics/recent_listings.json"
     with open(output_path, "w") as f:
         json.dump(final, f, indent=2)
     print(f"Saved {len(final)} recent aggregated listings to {output_path}")
