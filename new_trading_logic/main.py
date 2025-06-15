@@ -66,21 +66,19 @@ async def arb_dropped_async(new_ticker, balance_manager):
         )
 
 async def monitor_listing(new_ticker, balance_manager):
-    orderbook_available = await wait_for_orderbook(new_ticker)
+    orderbook_available = await wait_for_orderbook((new_ticker[0], new_ticker[1]), new_ticker[2] * 60)
     if orderbook_available:
         await arb_dropped_async(new_ticker, balance_manager)
     else:
         print(f"❌ Orderbook never became available for {new_ticker}")
 
 async def listing_detection_loop(balance_manager):
-    seen_tickers = set()
     while True:
         try:
             listingAgg = ListingAggregator()
             listingAgg.gather_listings()
             new_ticker = identify_difference()
-            if new_ticker and tuple(new_ticker) not in seen_tickers:
-                seen_tickers.add(tuple(new_ticker))
+            if new_ticker:
                 print(f"🆕 Detected: {new_ticker} — launching monitor task.")
                 asyncio.create_task(monitor_listing(new_ticker, balance_manager))
         except Exception as e:

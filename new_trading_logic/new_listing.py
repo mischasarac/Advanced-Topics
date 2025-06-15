@@ -2,7 +2,7 @@ import json
 import os
 import re
 from datetime import datetime
-
+import pytz  # Import pytz for timezone handling
 import requests
 
 
@@ -19,7 +19,7 @@ class ExchangeBase:
         self.url = url
         self.params = params
         self.headers = headers
-        self.tickers = set()
+        self.tickers = dict()
 
     def get_titles(self):
         """
@@ -33,9 +33,14 @@ class ExchangeBase:
         """
         titles = self.get_titles()
         for title in titles:
-            current_ticker = self.extract_ticker(title)
+            current_ticker = self.extract_ticker(title[0])
             if current_ticker:
-                self.tickers.add(current_ticker[0])
+                # Release - 30000 for 30 second early trigger
+                self.tickers[current_ticker[0]] = {
+                                                    "release" : (title[1].timestamp() * 1000) - 30000, 
+                                                    "scan_time" : title[2],
+                                                    "exchange" : self.name
+                                                  }
         return self.tickers
 
     def extract_ticker(self, title):
@@ -72,7 +77,7 @@ class BinanceExchange(ExchangeBase):
             data = response.json()
             # print(data)
             articles = data.get('data', {}).get('catalogs', [])[0].get('articles', [])
-            result = [article.get("title") for article in articles]
+            result = [(article.get("title"), datetime.now(), 300) for article in articles]
             return result
         except requests.RequestException as e:
             print(f"Error with fetching data from {self.name}: {e}")
@@ -93,7 +98,7 @@ class BybitExchange(ExchangeBase):
             response.raise_for_status()
             data = response.json()
             articles = data.get("result", {}).get("list", [])
-            result = [article.get("title", "") for article in articles if article.get("type", {}).get("key") == "new_crypto"]
+            result = [(article.get("title", ""), datetime.now(), 60) for article in articles if article.get("type", {}).get("key") == "new_crypto"]
             return result
         except requests.RequestException as e:
             print(f"Error fetching data from {self.name}: {e}")
@@ -107,14 +112,44 @@ class KucoinExchange(ExchangeBase):
 
     def get_titles(self):
         """
-        Fetches titles from Kucoin API.
+        Fetches titles from Kucoin API and parses announcement time into local datetime.
         """
         try:
             response = requests.get(self.url, params=self.params, headers=self.headers)
             response.raise_for_status()
             data = response.json()
             articles = data["data"]["items"]
-            result = [article.get("annTitle", "") for article in articles]
+            result = []
+
+            for article in articles:
+                ann_title = article.get("annTitle", "")
+                ann_desc = article.get("annDesc", "")  # e.g., "Trading: 13:00 on June 10, 2025 (UTC)"
+                
+                try:
+                    # Match pattern in annDesc
+                    match = re.search(r'Trading:\s*(\d{2}:\d{2}) on ([A-Za-z]+ \d{1,2}, \d{4}) \(UTC\)', ann_desc)
+                    if not match:
+                        raise ValueError(f"No match found in annDesc: {ann_desc}")
+                    
+                    time_str = match.group(1)           # '13:00'
+                    date_str = match.group(2)           # 'June 10, 2025'
+                    full_str = f"{time_str} {date_str}" # '13:00 June 10, 2025'
+
+                    # Parse UTC datetime
+                    utc_dt = datetime.strptime(full_str, "%H:%M %B %d, %Y")
+                    utc_dt = utc_dt.replace(tzinfo=pytz.utc)
+
+                    # Convert to local timezone
+                    local_tz = pytz.timezone('Australia/Adelaide')
+                    local_dt = utc_dt.astimezone(local_tz)
+
+                    # Strip tzinfo to make it consistent with datetime.now()
+                    naive_local_dt = local_dt.replace(tzinfo=None)
+
+                    result.append((ann_title, naive_local_dt, 60))
+                except Exception as e:
+                    print(f"Error parsing announcement time: {e}")
+
             return result
         except requests.RequestException as e:
             print(f"Error with fetching data from {self.name}: {e}")
@@ -158,15 +193,14 @@ class ListingAggregator:
         Gathers listings from all exchanges and saves cross-listings.
         """
         seen = {}
+        # For each exchange, combining listing, listing time, and hours spent requesting.
         for exchange in self.exchanges:
             seen[exchange.name] = []
             data = exchange.fetch_data()
             if not data:
                 continue
-            listings = exchange.tickers
-            self.listings[exchange.name] = listings
-            for ticker in listings:
-                seen[exchange.name].append(ticker)
+            seen[exchange.name] = exchange.tickers
+            # print(seen)
 
         self._save_cross_listings(seen)
 
@@ -181,5 +215,6 @@ class ListingAggregator:
         with open(path, "w") as f:
             json.dump(seen, f, indent=2)
 
-la = ListingAggregator()
-la.gather_listings()
+if __name__ == "__main__":
+    la = ListingAggregator()
+    la.gather_listings()

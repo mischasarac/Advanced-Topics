@@ -2,6 +2,8 @@ from datetime import datetime, timedelta
 import time
 from get_orderbook import get_orderbook
 from get_balances import BalanceManager
+from execute_trade import close_trade
+
 
 
 def close_position(ticker : str, long_exchange : str, short_exchange : str, curr_trades, balance_manager):
@@ -24,5 +26,5 @@ def close_position(ticker : str, long_exchange : str, short_exchange : str, curr
     else:
         print("⚠️ Max wait time reached — closing positions anyway.")
 
-        # Close position and update balances accordingly
-    close_position(curr_trades, balance_manager)
+    # Close position and update balances accordingly
+    close_trade(curr_trades, balance_manager)

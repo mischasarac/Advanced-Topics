@@ -1,34 +1,148 @@
 {
-  "binance": [
-    "BDXN",
-    "HUMA",
-    "HOME",
-    "A",
-    "RESOLV",
-    "SOPH",
-    "USD1",
-    "2025-06-05",
-    "SKATE"
-  ],
-  "bybit": [
-    "BDXN",
-    "RESOLV",
-    "SOPH",
-    "PUMPBTC",
-    "LA",
-    "SKATE",
-    "B2"
-  ],
-  "kucoin": [
-    "HOME",
-    "ZEUSETH",
-    "RESOLV",
-    "ASRR",
-    "PRO",
-    "FLOCK",
-    "EDGEN",
-    "LA",
-    "MIRAI",
-    "SKATE"
-  ]
+  "binance": {
+    "HOME": {
+      "release": 1749946374418.282,
+      "scan_time": 300,
+      "exchange": "binance"
+    },
+    "RESOLV": {
+      "release": 1749946374418.285,
+      "scan_time": 300,
+      "exchange": "binance"
+    },
+    "2025-06-11": {
+      "release": 1749946374418.281,
+      "scan_time": 300,
+      "exchange": "binance"
+    },
+    "SKATE": {
+      "release": 1749946374418.283,
+      "scan_time": 300,
+      "exchange": "binance"
+    },
+    "2025-06-05": {
+      "release": 1749946374418.284,
+      "scan_time": 300,
+      "exchange": "binance"
+    },
+    "BDXN": {
+      "release": 1749946374418.287,
+      "scan_time": 300,
+      "exchange": "binance"
+    },
+    "SOPH": {
+      "release": 1749946374418.2898,
+      "scan_time": 300,
+      "exchange": "binance"
+    },
+    "A": {
+      "release": 1749946374418.289,
+      "scan_time": 300,
+      "exchange": "binance"
+    },
+    "HUMA": {
+      "release": 1749946374418.2898,
+      "scan_time": 300,
+      "exchange": "binance"
+    }
+  },
+  "bybit": {
+    "CUDIS": {
+      "release": 1749946375819.8171,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "RESOLV": {
+      "release": 1749946375819.8281,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "SQD": {
+      "release": 1749946375819.826,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "HOME": {
+      "release": 1749946375819.829,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "SKATE": {
+      "release": 1749946375819.834,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "B2": {
+      "release": 1749946375819.835,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "LA": {
+      "release": 1749946375819.8398,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "BDXN": {
+      "release": 1749946375819.844,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "PUMPBTC": {
+      "release": 1749946375819.846,
+      "scan_time": 60,
+      "exchange": "bybit"
+    }
+  },
+  "kucoin": {
+    "SGC": {
+      "release": 1749815970000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "BULLA": {
+      "release": 1749725970000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "BOMB": {
+      "release": 1750154370000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "RESOLV": {
+      "release": 1749560370000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "HOME": {
+      "release": 1749553170000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "ZEUSETH": {
+      "release": 1749466770000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "SKATE": {
+      "release": 1749463170000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "FLOCK": {
+      "release": 1749203970000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "MIRAI": {
+      "release": 1749117570000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "LA": {
+      "release": 1749038370000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    }
+  }
 }

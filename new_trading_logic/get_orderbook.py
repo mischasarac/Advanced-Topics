@@ -1,23 +1,17 @@
 import ccxt
 import json
+from orderbook import Binance, Bybit, Kucoin
 
 exchanges = {
-    "binance": ccxt.binance(),
-    "bybit": ccxt.bybit(),
-    "kucoin": ccxt.kucoin()
+    "binance": Binance(),
+    "bybit": Bybit(),
+    "kucoin": Kucoin()
 }
 
 def get_orderbook(ticker: str, exchange: str, orderbook_depth=3):
     orderbook = {}
-    try:
-        # Format the symbol correctly for each exchange
-        if exchange == "kucoin":
-            curr_ticker = f"{ticker}/USDT"
-        else:
-            curr_ticker = f"{ticker}USDT"
-        
-        # print(f"Querying: {curr_ticker} on {exchange}")
-        request = exchanges[exchange].fetch_order_book(curr_ticker)
+    try:        
+        request = exchanges[exchange].fetch_orderbook(ticker)
         
         orderbook = {
             "bids": request["bids"][:orderbook_depth],

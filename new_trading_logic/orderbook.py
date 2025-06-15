@@ -5,7 +5,7 @@ import json
 
 class Exchange:
     def __init__(self):
-        self.limit = 2
+        self.limit = 3
 
     def get_url(self):
         raise NotImplementedError
@@ -18,6 +18,13 @@ class Exchange:
 
     def parse_response(self, response_json):
         raise NotImplementedError
+    
+    def _convert_orderbook(self, raw_orderbook):
+        return {
+            "asks": [[float(p), float(v)] for p, v in raw_orderbook.get("asks", [])[:self.limit]],
+            "bids": [[float(p), float(v)] for p, v in raw_orderbook.get("bids", [])[:self.limit]]
+        }
+
 
     def fetch_orderbook(self, ticker):
         try:
@@ -25,7 +32,7 @@ class Exchange:
             response = requests.get(self.get_url(), params=self.get_params())
             response.raise_for_status()
             data = self.parse_response(response.json())
-            return data
+            return self._convert_orderbook(data)
         except requests.RequestException as e:
             print(f"Request error for {self.__class__.__name__} - {self.ticker}: {e}")
         except Exception as e:
@@ -78,10 +85,11 @@ class Kucoin(Exchange):
         data = response_json.get("data")
         if data:
             return {
-                "asks": data["asks"][0:2],
-                "bids": data["bids"][0:2]
+                "asks": data["asks"][:self.limit],
+                "bids":  data["bids"][:self.limit]
             }
         return None
+
 
 
 
