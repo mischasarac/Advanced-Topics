@@ -1,99 +1,57 @@
 {
-  "binance": {
-    "HOME": {
-      "release": 1749946354606.253,
-      "scan_time": 300,
-      "exchange": "binance"
-    },
-    "RESOLV": {
-      "release": 1749946354606.256,
-      "scan_time": 300,
-      "exchange": "binance"
-    },
-    "2025-06-11": {
-      "release": 1749946354606.252,
-      "scan_time": 300,
-      "exchange": "binance"
-    },
-    "SKATE": {
-      "release": 1749946354606.2542,
-      "scan_time": 300,
-      "exchange": "binance"
-    },
-    "2025-06-05": {
-      "release": 1749946354606.256,
-      "scan_time": 300,
-      "exchange": "binance"
-    },
-    "BDXN": {
-      "release": 1749946354606.2578,
-      "scan_time": 300,
-      "exchange": "binance"
-    },
-    "SOPH": {
-      "release": 1749946354606.26,
-      "scan_time": 300,
-      "exchange": "binance"
-    },
-    "A": {
-      "release": 1749946354606.26,
-      "scan_time": 300,
-      "exchange": "binance"
-    },
-    "HUMA": {
-      "release": 1749946354606.261,
-      "scan_time": 300,
-      "exchange": "binance"
-    }
-  },
   "bybit": {
     "CUDIS": {
-      "release": 1749946356407.031,
+      "release": 1750053576537.159,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "RESOLV": {
-      "release": 1749946356407.038,
+      "release": 1750053576537.2678,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "SQD": {
-      "release": 1749946356407.037,
+      "release": 1750053576537.2551,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "HOME": {
-      "release": 1749946356407.038,
+      "release": 1750053576537.274,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "SKATE": {
-      "release": 1749946356407.04,
+      "release": 1750053576537.3052,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "B2": {
-      "release": 1749946356407.04,
+      "release": 1750053576537.312,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "LA": {
-      "release": 1749946356407.042,
+      "release": 1750053576537.3372,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "BDXN": {
-      "release": 1749946356407.043,
+      "release": 1750053576537.3608,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "PUMPBTC": {
-      "release": 1749946356407.045,
+      "release": 1750053576537.3708,
       "scan_time": 60,
       "exchange": "bybit"
     }
   },
   "kucoin": {
+    "GOMINING": {
+      "release": 1750067970000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
     "SGC": {
       "release": 1749815970000.0,
       "scan_time": 60,
@@ -136,11 +94,6 @@
     },
     "MIRAI": {
       "release": 1749117570000.0,
-      "scan_time": 60,
-      "exchange": "kucoin"
-    },
-    "LA": {
-      "release": 1749038370000.0,
       "scan_time": 60,
       "exchange": "kucoin"
     }

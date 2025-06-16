@@ -13,10 +13,6 @@ LOG_FILE = "trade_log.csv"
 
 async def wait_for_orderbook(new_ticker, timeout_seconds=28800):
     start_time = time.time()
-    if new_ticker[0] == "kucoin" and get_orderbook(new_ticker[1], new_ticker[0]) is None:
-        # kucoin normally does early announcements
-        time.sleep(3600)
-        
     while True:
         try:
             orderbook = get_orderbook(new_ticker[1], new_ticker[0])

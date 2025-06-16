@@ -123,7 +123,8 @@ class KucoinExchange(ExchangeBase):
 
             for article in articles:
                 ann_title = article.get("annTitle", "")
-                ann_desc = article.get("annDesc", "")  # e.g., "Trading: 13:00 on June 10, 2025 (UTC)"
+                if "annDesc" in article:
+                    ann_desc = article.get("annDesc", "")  # e.g., "Trading: 13:00 on June 10, 2025 (UTC)"
                 
                 try:
                     # Match pattern in annDesc
@@ -166,13 +167,13 @@ class ListingAggregator:
         Initializes the listing aggregator with exchange instances.
         """
         self.exchanges = [
-            BinanceExchange(
-                "binance",
-                "https://www.binance.com/bapi/composite/v1/public/cms/article/list/query",
-                {"type": 1, "catalogId": 48, "pageNo": 1, "pageSize": 20},
-                {"User-Agent": "Mozilla/5.0", "Referer": "https://www.binance.com/en/support/announcement/c-48",
-                 "Accept-Language": "en-US,en;q=0.9", "Accept": "application/json, text/plain, */*"}
-            ),
+            # BinanceExchange(
+            #     "binance",
+            #     "https://www.binance.com/bapi/composite/v1/public/cms/article/list/query",
+            #     {"type": 1, "catalogId": 48, "pageNo": 1, "pageSize": 20},
+            #     {"User-Agent": "Mozilla/5.0", "Referer": "https://www.binance.com/en/support/announcement/c-48",
+            #      "Accept-Language": "en-US,en;q=0.9", "Accept": "application/json, text/plain, */*"}
+            # ),
             BybitExchange(
                 "bybit",
                 "https://api.bybit.com/v5/announcements/index",
