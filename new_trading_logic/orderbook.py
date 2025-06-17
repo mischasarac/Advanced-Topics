@@ -32,7 +32,10 @@ class Exchange:
             response = requests.get(self.get_url(), params=self.get_params())
             response.raise_for_status()
             data = self.parse_response(response.json())
-            return self._convert_orderbook(data)
+            if data:
+                return self._convert_orderbook(data)
+            else:
+                return None
         except requests.RequestException as e:
             print(f"Request error for {self.__class__.__name__} - {self.ticker}: {e}")
         except Exception as e:

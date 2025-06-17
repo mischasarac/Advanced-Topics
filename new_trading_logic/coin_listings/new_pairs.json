@@ -1,47 +1,57 @@
 {
   "bybit": {
     "CUDIS": {
-      "release": 1750074177986.661,
+      "release": 1750120470496.276,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "RESOLV": {
-      "release": 1750074177986.68,
+      "release": 1750120470496.32,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "SQD": {
-      "release": 1750074177986.676,
+      "release": 1750120470496.307,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "HOME": {
-      "release": 1750074177986.682,
+      "release": 1750120470496.326,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "SKATE": {
-      "release": 1750074177986.694,
+      "release": 1750120470496.356,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "B2": {
-      "release": 1750074177986.696,
+      "release": 1750120470496.363,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "LA": {
-      "release": 1750074177986.706,
+      "release": 1750120470496.3901,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "BDXN": {
-      "release": 1750074177986.7139,
+      "release": 1750120470496.4148,
       "scan_time": 60,
       "exchange": "bybit"
     }
   },
   "kucoin": {
+    "SPK": {
+      "release": 1750120470867.676,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "BOMB": {
+      "release": 1750161570000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
     "GOMINING": {
       "release": 1750067970000.0,
       "scan_time": 60,
@@ -54,11 +64,6 @@
     },
     "BULLA": {
       "release": 1749725970000.0,
-      "scan_time": 60,
-      "exchange": "kucoin"
-    },
-    "BOMB": {
-      "release": 1750161570000.0,
       "scan_time": 60,
       "exchange": "kucoin"
     },
@@ -79,11 +84,6 @@
     },
     "SKATE": {
       "release": 1749463170000.0,
-      "scan_time": 60,
-      "exchange": "kucoin"
-    },
-    "FLOCK": {
-      "release": 1749203970000.0,
       "scan_time": 60,
       "exchange": "kucoin"
     }

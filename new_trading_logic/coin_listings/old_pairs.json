@@ -1,52 +1,57 @@
 {
   "bybit": {
     "CUDIS": {
-      "release": 1750053576537.159,
+      "release": 1750119564285.922,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "RESOLV": {
-      "release": 1750053576537.2678,
+      "release": 1750119564285.9421,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "SQD": {
-      "release": 1750053576537.2551,
+      "release": 1750119564285.937,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "HOME": {
-      "release": 1750053576537.274,
+      "release": 1750119564285.9448,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "SKATE": {
-      "release": 1750053576537.3052,
+      "release": 1750119564285.9558,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "B2": {
-      "release": 1750053576537.312,
+      "release": 1750119564285.958,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "LA": {
-      "release": 1750053576537.3372,
+      "release": 1750119564285.968,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "BDXN": {
-      "release": 1750053576537.3608,
-      "scan_time": 60,
-      "exchange": "bybit"
-    },
-    "PUMPBTC": {
-      "release": 1750053576537.3708,
+      "release": 1750119564285.9758,
       "scan_time": 60,
       "exchange": "bybit"
     }
   },
   "kucoin": {
+    "SPK": {
+      "release": 1750119564937.8481,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "BOMB": {
+      "release": 1750161570000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
     "GOMINING": {
       "release": 1750067970000.0,
       "scan_time": 60,
@@ -59,11 +64,6 @@
     },
     "BULLA": {
       "release": 1749725970000.0,
-      "scan_time": 60,
-      "exchange": "kucoin"
-    },
-    "BOMB": {
-      "release": 1750154370000.0,
       "scan_time": 60,
       "exchange": "kucoin"
     },
@@ -84,16 +84,6 @@
     },
     "SKATE": {
       "release": 1749463170000.0,
-      "scan_time": 60,
-      "exchange": "kucoin"
-    },
-    "FLOCK": {
-      "release": 1749203970000.0,
-      "scan_time": 60,
-      "exchange": "kucoin"
-    },
-    "MIRAI": {
-      "release": 1749117570000.0,
       "scan_time": 60,
       "exchange": "kucoin"
     }

@@ -123,14 +123,14 @@ class KucoinExchange(ExchangeBase):
 
             for article in articles:
                 ann_title = article.get("annTitle", "")
-                if "annDesc" in article:
-                    ann_desc = article.get("annDesc", "")  # e.g., "Trading: 13:00 on June 10, 2025 (UTC)"
-                
+                ann_desc = article.get("annDesc", "")  # e.g., "Trading: 13:00 on June 10, 2025 (UTC)"
+
                 try:
                     # Match pattern in annDesc
                     match = re.search(r'Trading:\s*(\d{2}:\d{2}) on ([A-Za-z]+ \d{1,2}, \d{4}) \(UTC\)', ann_desc)
                     if not match:
-                        raise ValueError(f"No match found in annDesc: {ann_desc}")
+                        result.append((ann_title, datetime.now(), 60))
+                        continue
                     
                     time_str = match.group(1)           # '13:00'
                     date_str = match.group(2)           # 'June 10, 2025'
