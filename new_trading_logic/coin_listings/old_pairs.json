@@ -1,49 +1,59 @@
 {
   "bybit": {
+    "H": {
+      "release": 1750582919937.003,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "SPK": {
+      "release": 1750582919937.0798,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
     "CUDIS": {
-      "release": 1750119564285.922,
+      "release": 1750582919937.1082,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "RESOLV": {
-      "release": 1750119564285.9421,
+      "release": 1750582919937.133,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "SQD": {
-      "release": 1750119564285.937,
+      "release": 1750582919937.1208,
       "scan_time": 60,
       "exchange": "bybit"
     },
     "HOME": {
-      "release": 1750119564285.9448,
-      "scan_time": 60,
-      "exchange": "bybit"
-    },
-    "SKATE": {
-      "release": 1750119564285.9558,
-      "scan_time": 60,
-      "exchange": "bybit"
-    },
-    "B2": {
-      "release": 1750119564285.958,
-      "scan_time": 60,
-      "exchange": "bybit"
-    },
-    "LA": {
-      "release": 1750119564285.968,
-      "scan_time": 60,
-      "exchange": "bybit"
-    },
-    "BDXN": {
-      "release": 1750119564285.9758,
+      "release": 1750582919937.139,
       "scan_time": 60,
       "exchange": "bybit"
     }
   },
   "kucoin": {
+    "MOOLAH": {
+      "release": 1750240770000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "STON": {
+      "release": 1750240770000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "NAM": {
+      "release": 1750327170000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "MAT": {
+      "release": 1750334370000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
     "SPK": {
-      "release": 1750119564937.8481,
+      "release": 1750582920191.33,
       "scan_time": 60,
       "exchange": "kucoin"
     },
@@ -64,26 +74,6 @@
     },
     "BULLA": {
       "release": 1749725970000.0,
-      "scan_time": 60,
-      "exchange": "kucoin"
-    },
-    "RESOLV": {
-      "release": 1749560370000.0,
-      "scan_time": 60,
-      "exchange": "kucoin"
-    },
-    "HOME": {
-      "release": 1749553170000.0,
-      "scan_time": 60,
-      "exchange": "kucoin"
-    },
-    "ZEUSETH": {
-      "release": 1749466770000.0,
-      "scan_time": 60,
-      "exchange": "kucoin"
-    },
-    "SKATE": {
-      "release": 1749463170000.0,
       "scan_time": 60,
       "exchange": "kucoin"
     }

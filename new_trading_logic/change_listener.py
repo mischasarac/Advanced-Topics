@@ -21,6 +21,7 @@ def detect_upcoming(upcoming, upcoming_path):
                 upcoming.pop(ticker)
                 update_old_pairs(upcoming_path, upcoming)
                 return (details["exchange"], ticker, details["scan_time"])
+    update_old_pairs(upcoming_path, upcoming)
     return None
 
 def identify_difference():
