@@ -1,9 +1,5 @@
 timestamp,action,exchange,ticker,trade_type,trade_amount,trade_price,balance_after,pnl
-2025-06-15 09:26:08,execute_arb,binance,RESOLV,long,233.281493,0.26,0.00,
-2025-06-15 09:26:08,execute_arb,bybit,RESOLV,short,234.192037,0.26,0.00,
-2025-06-15 09:30:41,execute_arb,kucoin,RESOLV,long,232.468036,0.26,0.00,
-2025-06-15 09:30:41,execute_arb,bybit,RESOLV,short,233.553912,0.26,0.00,
-2025-06-15 09:43:05,execute_arb,kucoin,RESOLV,long,231.570822,0.26,0.00,
-2025-06-15 09:43:05,execute_arb,bybit,RESOLV,short,232.468036,0.26,0.00,
-2025-06-15 09:43:11,close_position,kucoin,RESOLV,long,231.570822,0.26,59.92,-0.02
-2025-06-15 09:43:11,close_position,bybit,RESOLV,short,232.468036,0.26,59.92,-0.02
+2025-06-24 23:30:07,execute_arb,binance,NEWT,long,120.048019,0.50,0.00,
+2025-06-24 23:30:07,execute_arb,bybit,NEWT,short,143.163923,0.42,0.00,
+2025-06-25 00:00:09,close_position,binance,NEWT,long,120.048019,0.64,76.39,16.47
+2025-06-25 00:00:09,close_position,bybit,NEWT,short,143.163923,0.52,45.49,-14.46
