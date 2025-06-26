@@ -1,0 +1,17 @@
+{
+  "H": {
+    "release": 1750841970000.0,
+    "scan_time": 60,
+    "exchange": "kucoin"
+  },
+  "SAHARA": {
+    "release": 1750939170000.0,
+    "scan_time": 60,
+    "exchange": "kucoin"
+  },
+  "MORE": {
+    "release": 1751025570000.0,
+    "scan_time": 60,
+    "exchange": "kucoin"
+  }
+}

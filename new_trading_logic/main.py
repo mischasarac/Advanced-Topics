@@ -13,10 +13,6 @@ LOG_FILE = "trade_log.csv"
 
 async def wait_for_orderbook(new_ticker, timeout_seconds=28800):
     start_time = time.time()
-    if new_ticker[0] == "kucoin" and get_orderbook(new_ticker[1], new_ticker[0]) is None:
-        # kucoin normally does early announcements
-        time.sleep(3600)
-        
     while True:
         try:
             orderbook = get_orderbook(new_ticker[1], new_ticker[0])
@@ -66,21 +62,19 @@ async def arb_dropped_async(new_ticker, balance_manager):
         )
 
 async def monitor_listing(new_ticker, balance_manager):
-    orderbook_available = await wait_for_orderbook(new_ticker)
+    orderbook_available = await wait_for_orderbook((new_ticker[0], new_ticker[1]), new_ticker[2] * 60)
     if orderbook_available:
         await arb_dropped_async(new_ticker, balance_manager)
     else:
         print(f"❌ Orderbook never became available for {new_ticker}")
 
 async def listing_detection_loop(balance_manager):
-    seen_tickers = set()
     while True:
         try:
             listingAgg = ListingAggregator()
             listingAgg.gather_listings()
             new_ticker = identify_difference()
-            if new_ticker and tuple(new_ticker) not in seen_tickers:
-                seen_tickers.add(tuple(new_ticker))
+            if new_ticker:
                 print(f"🆕 Detected: {new_ticker} — launching monitor task.")
                 asyncio.create_task(monitor_listing(new_ticker, balance_manager))
         except Exception as e:

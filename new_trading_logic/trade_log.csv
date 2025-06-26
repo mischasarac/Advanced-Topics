@@ -1,1 +1,5 @@
 timestamp,action,exchange,ticker,trade_type,trade_amount,trade_price,balance_after,pnl
+2025-06-24 23:30:07,execute_arb,binance,NEWT,long,120.048019,0.50,0.00,
+2025-06-24 23:30:07,execute_arb,bybit,NEWT,short,143.163923,0.42,0.00,
+2025-06-25 00:00:09,close_position,binance,NEWT,long,120.048019,0.64,76.39,16.47
+2025-06-25 00:00:09,close_position,bybit,NEWT,short,143.163923,0.52,45.49,-14.46

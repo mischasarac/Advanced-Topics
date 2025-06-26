@@ -48,7 +48,7 @@ def detect_arb(new_ticker):
     print(best_ask)
     print(best_bid)
     print(f"disparity : {best_bid[1] / best_ask[1]}")
-    if(best_bid[1] > best_ask[1] * 1.003): 
+    if(best_bid[1] > best_ask[1] * 1.004): 
         return {
             "ticker" : new_ticker[1],
             "long" : best_bid,

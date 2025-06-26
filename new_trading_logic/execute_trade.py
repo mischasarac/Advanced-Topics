@@ -45,12 +45,14 @@ def execute_arb(ticker: str, long_exchange: str, short_exchange: str, amount: di
     
     long_orderbook = get_orderbook(ticker, long_exchange)
     short_orderbook = get_orderbook(ticker, short_exchange)
-    if long_orderbook is None or short_orderbook is None:
+    print(long_orderbook)
+    print(short_orderbook)
+    if (long_orderbook is None) or (short_orderbook is None):
         print("Failed to retrieve orderbook.")
         return
-    long_price = long_orderbook[long_exchange]['asks'][0][0] if long_exchange in long_orderbook else None
-    short_price = short_orderbook[short_exchange]['bids'][0][0] if short_exchange in short_orderbook else None
-    if long_price is None or short_price is None:
+    long_price = long_orderbook['asks'][0][0]
+    short_price = short_orderbook['bids'][0][0]
+    if (long_price is None) or (short_price is None):
         print("Failed to retrieve prices for exchanges.")
         return
     
@@ -64,8 +66,8 @@ def execute_arb(ticker: str, long_exchange: str, short_exchange: str, amount: di
     balance_manager.set_balance(long_exchange, new_long_balance)
     balance_manager.set_balance(short_exchange, new_short_balance)
 
-    print(f"Executed arb: Long {long_trade_amount:.6f} at {long_price:.2f} on {long_exchange}, balance now {new_long_balance:.2f} USDT")
-    print(f"Executed arb: Short {short_trade_amount:.6f} at {short_price:.2f} on {short_exchange}, balance now {new_short_balance:.2f} USDT")
+    print(f"Executed arb: Long {long_trade_amount:.6f} at {long_price:.6f} on {long_exchange}, balance now {new_long_balance:.6f} USDT")
+    print(f"Executed arb: Short {short_trade_amount:.6f} at {short_price:.6f} on {short_exchange}, balance now {new_short_balance:.6f} USDT")
 
     # Log trades to CSV
     log_trade("execute_arb", long_exchange, ticker, "long", long_trade_amount, long_price, new_long_balance)
@@ -86,7 +88,7 @@ def execute_arb(ticker: str, long_exchange: str, short_exchange: str, amount: di
         }
     }
     
-def close_position(position: dict, balance_manager):
+def close_trade(position: dict, balance_manager):
     init_log_file()
     trade_cost = 0.001
     long_trade = position.get('long', {})
@@ -99,12 +101,12 @@ def close_position(position: dict, balance_manager):
     # curr_orderbook = get_orderbook(long_trade['ticker'], [long_trade['exchange'], short_trade['exchange']])
     long_orderbook = get_orderbook(long_trade['ticker'], long_trade['exchange'])
     short_orderbook = get_orderbook(short_trade['ticker'], short_trade['exchange'])
-    if long_orderbook is None or short_orderbook is None:
+    if (long_orderbook is None) or (short_orderbook is None):
         print("Failed to retrieve orderbook.")
         return
     
-    long_close_price = long_orderbook[long_trade['exchange']]['bids'][0][0] if long_trade['exchange'] in curr_orderbook else None
-    short_close_price = short_orderbook[short_trade['exchange']]['asks'][0][0] if short_trade['exchange'] in curr_orderbook else None
+    long_close_price = long_orderbook['bids'][0][0]
+    short_close_price = short_orderbook['asks'][0][0]
     if long_close_price is None or short_close_price is None:
         print("Failed to retrieve prices for exchanges.")
         return

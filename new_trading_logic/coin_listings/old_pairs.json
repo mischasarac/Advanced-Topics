@@ -1,34 +1,76 @@
 {
-  "binance": [
-    "BDXN",
-    "HUMA",
-    "HOME",
-    "A",
-    "RESOLV",
-    "SOPH",
-    "USD1",
-    "2025-06-05",
-    "SKATE"
-  ],
-  "bybit": [
-    "BDXN",
-    "RESOLV",
-    "SOPH",
-    "PUMPBTC",
-    "LA",
-    "SKATE",
-    "B2"
-  ],
-  "kucoin": [
-    "HOME",
-    "ZEUSETH",
-    "RESOLV",
-    "ASRR",
-    "PRO",
-    "FLOCK",
-    "EDGEN",
-    "LA",
-    "MIRAI",
-    "SKATE"
-  ]
+  "bybit": {
+    "H": {
+      "release": 1750760988045.146,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "SPK": {
+      "release": 1750760988045.285,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "CUDIS": {
+      "release": 1750760988045.313,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "RESOLV": {
+      "release": 1750760988045.319,
+      "scan_time": 60,
+      "exchange": "bybit"
+    },
+    "SQD": {
+      "release": 1750760988045.327,
+      "scan_time": 60,
+      "exchange": "bybit"
+    }
+  },
+  "kucoin": {
+    "MORE": {
+      "release": 1751025570000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "SAHARA": {
+      "release": 1750939170000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "NEWT": {
+      "release": 1750773570000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "DMC": {
+      "release": 1750762770000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "MGO": {
+      "release": 1750760988444.8198,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "H": {
+      "release": 1750841970000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "INFOFI": {
+      "release": 1750672770000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "MOOLAH": {
+      "release": 1750240770000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    },
+    "STON": {
+      "release": 1750240770000.0,
+      "scan_time": 60,
+      "exchange": "kucoin"
+    }
+  }
 }
