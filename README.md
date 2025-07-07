@@ -19,8 +19,9 @@ The project is still in its early development stages. I'm currently testing and 
 
 ## Branch Info
 
-To follow the latest progress and commits, check out the active development branch:
-### LLM_detection
+To follow the latest progress and commits, check out the active development branch:  
+### [LLM_detection](https://github.com/mischasarac/Advanced-Topics/tree/LLM_detection)
+
 
 
 ## Notes
