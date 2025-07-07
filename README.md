@@ -4,7 +4,7 @@
 
 This repository documents my ongoing work to implement a live listing arbitrage strategy. The code runs locally on a Raspberry Pi, and the project is based on the hypothesis that newly listed cryptocurrencies often experience short-term pricing inefficiencies across centralized exchanges.
 
-By exploiting these temporary lags and discrepancies — particularly on Binance, Bybit, and KuCoin — the aim is to execute profitable cross-exchange trades. Future improvements include expanding to decentralized exchanges to further improve latency and execution performance.
+By exploiting these temporary lags and discrepancies, particularly on Binance, Bybit, and KuCoin, the aim is to execute profitable cross-exchange trades. Future improvements include expanding to decentralized exchanges to further improve latency and execution performance.
 
 ## Current Status
 
