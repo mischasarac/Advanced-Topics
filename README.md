@@ -1,9 +1,30 @@
-So far this repository is fairly unmaintained so I will set the outline as a guide for myself and also to others who come across this.
+# Listing Arbitrage Project
 
-The goal of this coding project is to execute a listing arbitrage in live testing. The code is run locally from my raspberry pi. The basis of my testing and trading is off the hypothesis that new listings across exchanges leads to lagging (as well as a number of other phenomena) which results in minor pricing discrepancies across exchanges. Ideally I will then execute live trades across Binance, Bybit, and Kucoin, while also building out to decentralzed exchanges to improve performance.
+## Overview
 
-Currently I am experimenting with a number of different approaches to execute these trades to identify potential strategies to improve my performance while also limiting API calls to avoid getting my IP blocked.
+This repository documents my ongoing work to implement a live listing arbitrage strategy. The code runs locally on a Raspberry Pi, and the project is based on the hypothesis that newly listed cryptocurrencies often experience short-term pricing inefficiencies across centralized exchanges.
 
-Currently this project is still in its development steps, though by the end of August I aim to deliver a minimum viable product.
+By exploiting these temporary lags and discrepancies — particularly on Binance, Bybit, and KuCoin — the aim is to execute profitable cross-exchange trades. Future improvements include expanding to decentralized exchanges to further improve latency and execution performance.
 
-If you are looking to track the progress of this project, the most recent work is done on the branch: 
+## Current Status
+
+The project is still in its early development stages. I'm currently testing and comparing different execution approaches to find strategies that improve trading performance while keeping API calls low to avoid IP rate-limiting or bans.
+
+## Goals
+
+ 1. Build an MVP by the end of August
+ 2. Develop and evaluate multiple trade execution methods
+ 3. Implement safeguards against overuse of exchange APIs
+ 4. Expand to decentralized exchanges (future milestone)
+
+## Branch Info
+
+To follow the latest progress and commits, check out the active development branch:
+### LLM_detection
+
+
+## Notes
+
+This repository was initially unstructured, but it now serves as a personal roadmap and a resource for anyone interested in listing arbitrage. Contributions, suggestions, or feedback are always welcome!
+
+
